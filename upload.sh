@@ -5,6 +5,6 @@ PASSWORD=${PASSWORD=dput@packages.debian.org}
 REMOTE_DIR=${REMOTE_DIR=~agornostal/ulauncher-dev}
 DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-echo $DATE > $DATE.txt
+dd if=/dev/zero of=$DATE.dat bs=2M count=24
 
-lftp -c "open -u $USERNAME,$PASSWORD ppa.launchpad.net; put -O $REMOTE_DIR $DATE.txt"
+lftp -c "open -u $USERNAME,$PASSWORD ppa.launchpad.net; put -O $REMOTE_DIR $DATE.dat"
