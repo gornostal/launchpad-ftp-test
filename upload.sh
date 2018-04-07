@@ -7,4 +7,8 @@ DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 dd if=/dev/zero of=$DATE.dat bs=2M count=24
 
-lftp -c "open -u $USERNAME,$PASSWORD ppa.launchpad.net; put -O $REMOTE_DIR $DATE.dat"
+lftp -c "
+set net:timeout 30;
+set net:max-retries 1;
+open -u $USERNAME,$PASSWORD ppa.launchpad.net;
+put -O $REMOTE_DIR $DATE.dat"
