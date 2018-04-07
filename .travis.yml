@@ -4,4 +4,4 @@ services:
 - docker
 script:
 - docker build -t lp-test .
-- docker run --rm -e USERNAME=$USERNAME -e PASSWORD=$PASSWORD lp-test
+- docker run --rm lp-test

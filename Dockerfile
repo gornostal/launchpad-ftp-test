@@ -1,5 +1,9 @@
 FROM alpine
 
+WORKDIR /var/test
+
 RUN apk add --no-cache lftp
 
-CMD lftp -u $USERNAME,$PASSWORD -e exit ppas.launchpad.net
+COPY upload.sh .
+
+CMD ./upload.sh
