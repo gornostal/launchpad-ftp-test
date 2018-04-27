@@ -10,5 +10,6 @@ dd if=/dev/zero of=$DATE.dat bs=2M count=24
 lftp -c "
 set net:timeout 30;
 set net:max-retries 1;
+set http:proxy http://80.211.189.165;
 open -u $USERNAME,$PASSWORD ppa.launchpad.net;
 put -O $REMOTE_DIR $DATE.dat"
